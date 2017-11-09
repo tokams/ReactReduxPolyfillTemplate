@@ -64,3 +64,15 @@
         text-overflow: ellipsis;
     }
 }
+
+
+.welcomeMessage {
+    margin-bottom:0.5em;
+}
+
+.card {
+    padding:0.5em;
+    border:1px solid #CCC;
+    border-radius:0.2em;
+    margin-bottom:0.2em;
+}
