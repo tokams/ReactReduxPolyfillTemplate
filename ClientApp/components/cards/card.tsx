@@ -7,8 +7,8 @@ export class CardComponent extends React.Component<any, any> {
 
     public render() {
         return (
-            <div>
-                <h3>{this.props.person.name}</h3>
+            <div className="card col-sm-8">
+                <p><b>{this.props.person.name}</b></p>
                 <p>{this.props.person.age}</p>
             </div>
         );

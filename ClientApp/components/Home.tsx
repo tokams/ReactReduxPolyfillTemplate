@@ -5,18 +5,16 @@ import { CardComponent } from "./cards/card";
 
 import { connect } from 'react-redux';
 import { ApplicationState } from "../store";
-import * as TodoStore from "../store/Todo";
 
 
-type TodoProps = TodoStore.TodosState 
-        & typeof TodoStore.actionCreators
-        & RouteComponentProps<{}>;
-
-class Home extends React.Component<RouteComponentProps<{}>, {}> {
+export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
    
     handleClick(event:any) {
         console.log("Hello, world");
     }
+
+
+    private hasData: boolean = true;
 
 
     private data: any[] = [
@@ -24,10 +22,6 @@ class Home extends React.Component<RouteComponentProps<{}>, {}> {
         {id:1, name: "Kjell Arne Hellum", age: 25},
         {id:2, name: "Simon Jespersen", age: 26},
     ];
-    private listItems = this.data.map((item) => 
-        <CardComponent key={item.id} person={item}></CardComponent>
-    );
-
 
     public render() {
         return <div>
@@ -40,13 +34,10 @@ class Home extends React.Component<RouteComponentProps<{}>, {}> {
             </div>
             
             <div>
-                {this.listItems}
+            {this.data.map((item, index) => (
+                <CardComponent key={index} person={item}></CardComponent>
+            ))}
             </div>
-            
         </div>;
     }
 }
-
-export default connect(
-    (state: ApplicationState) => state.todos,
-    TodoStore.actionCreators)(Home) as typeof Home;
